@@ -1,0 +1,65 @@
+import random
+class DatingProfile:
+    # To run, input d = DatingProfile('Your Name Here') into the shell
+    # you create your own profile using input into the class
+    def __init__(self,name):
+        self.name = name
+        # checks that tghe inputted name is a string
+        if type(self.name) != str:
+            raise AssertionError("Wrong input type")
+        
+        print("Build your profile: \n")
+        self.age = input("How old are you: ")
+        self.uni_year = input("What year of university are you in: ")
+        self.major = input("What is your major: ")
+        self.political = input("What is your political standpoint: ")
+        self.religion = input("What are your religious beliefs: ")
+        self.s_orientation = input("What is your sexual orientation: ")
+        self.relationship = input("What kind of relationship are you hoping to find using LoveBirds: ")
+        
+        # The program generates a random question for you to answer
+        self.question_bank = ["What is your favourite song: ","Who is your favourite artist or band: ", "What would you describe your style as: ", "What is you dream home: ", "If you could be an animal which one would you be: ", "What is your favourite time of day: ", "What non-food item do you want to eat most and what do you think it would taste like: ", "What is your favourite movie of all time: ", "What do you want most in life: ", "What are your thoughts on math: "]
+        self.question = random.choice(self.question_bank)
+        self.answer = input(self.question)
+        
+        self.all_profiles = []
+    
+    # prints your profile
+    # To run, input print(d) into the shell
+    def __str__(self):
+        return ("New Profile:\n\n" + "Name: " + self.name + "\nAge: " + str(self.age) + "\nYear of University: " + self.uni_year + "\nMajor: " + self.major + "\nPolitical Standpoint: " + self.political + "\nReligion: " + self.religion + "\nSexual Orientation: " + self.s_orientation + "\nDesired Relationship: " + self.relationship + "\n"+ self.question  + self.answer)
+    
+    # creates the profiles of other people on the app
+    # To run, input d.create_new_profile() into the shell
+    def create_new_profile(self):
+        n = input("What is your name: ")
+        a = input("How old are you: ")
+        u = input("What year of university are you in: ")
+        m = input("What is your major: ")
+        quest = random.choice(self.question_bank)
+        q = input(quest)
+        x = [n,a,u,m,quest,q]
+        self.all_profiles.append(x)
+    
+    # displays all profiles
+    # To run, input d.display() into the shell
+    def display(self):
+        for new in self.all_profiles:
+            print("Name: " +  new[0] + "\nAge: " + str(new[1]) + "\nYear of University: " + new[2] + "\nMajor: " + new[3] + '\n' + new[4] + new[5] + '\n')
+    
+    # Randomly displays someone's profile
+    # To run, input d.Browse() into the shell
+    def Browse(self):
+        user_input = 'continue' 
+        while user_input == 'continue':
+            user_input = input("Please type 'continue' or 'match': ")
+            # you can skip them
+            if user_input == 'continue' or user_input == 'Continue':
+                self.display()
+            # or match with them 
+            elif user_input == 'match' or user_input == 'Match':
+                print("")
+                print("Start a conversation with them here!")
+                # The program will generate a random icebreaker for your match to ask you
+                ice_breakers = ['What does your name mean?\n','How was your day?\n', 'What is your favourite season?\n','What is your star sign and do you think that it reflects your personality?\n', 'What is your favourite pokemon?\n', 'How do you usually celebrate your birthday?\n','What is your go-to outfit?\n', 'What is your go-to feel-good movie?\n', 'What is your favourite kind of date?\n', "Do you like Pitbull's music?\n"]
+                input("Your match decided to use an ice-breaker: " + random.choice(ice_breakers) + '\n')
