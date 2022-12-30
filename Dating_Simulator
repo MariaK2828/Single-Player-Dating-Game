@@ -1,5 +1,6 @@
 import random
 class DatingProfile:
+    random.seed(10)
     # To run, input d = DatingProfile('Your Name Here') into the shell
     # you create your own profile using input into the class
     def __init__(self,name):
@@ -41,11 +42,11 @@ class DatingProfile:
         x = [n,a,u,m,quest,q]
         self.all_profiles.append(x)
     
-    # displays all profiles
+    # Helper function that randomly displays a profile
     # To run, input d.display() into the shell
     def display(self):
-        for new in self.all_profiles:
-            print("Name: " +  new[0] + "\nAge: " + str(new[1]) + "\nYear of University: " + new[2] + "\nMajor: " + new[3] + '\n' + new[4] + new[5] + '\n')
+        new = random.choice(self.all_profiles)
+        print("Name: " +  new[0] + "\nAge: " + str(new[1]) + "\nYear of University: " + new[2] + "\nMajor: " + new[3] + '\n' + new[4] + new[5] + '\n')
     
     # Randomly displays someone's profile
     # To run, input d.Browse() into the shell
