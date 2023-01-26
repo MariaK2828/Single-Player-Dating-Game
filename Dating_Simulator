@@ -5,7 +5,7 @@ class DatingProfile:
     # you create your own profile using input into the class
     def __init__(self,name):
         self.name = name
-        # checks that tghe inputted name is a string
+        # checks that the inputted name is a string
         if type(self.name) != str:
             raise AssertionError("Wrong input type")
         
